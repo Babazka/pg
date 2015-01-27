@@ -14,10 +14,10 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
-	. "launchpad.net/gocheck"
+	. "gopkg.in/check.v1"
 
-	"gopkg.in/pg.v2"
-	"gopkg.in/pg.v2/pgutil"
+	"github.com/lukashes/pg"
+	"github.com/lukashes/pg/pgutil"
 )
 
 func Test(t *testing.T) { TestingT(t) }
@@ -273,12 +273,10 @@ var conversionTests = []conversionTest{
 
 	{src: customStrSlice{"one", "two"}, dst: &customStrSliceV},
 
-	{src: time.Time{}, dst: &timev, pgtype: "timestamp"},
 	{src: time.Now(), dst: &timev, pgtype: "timestamp"},
 	{src: time.Now().UTC(), dst: &timev, pgtype: "timestamp"},
 	{src: nil, dst: &timev, pgtype: "timestamp", wantzero: true},
 	{src: nil, dst: timeptr, pgtype: "timestamp", wantnil: true},
-	{src: time.Time{}, dst: &timev, pgtype: "timestamptz"},
 	{src: time.Now(), dst: &timev, pgtype: "timestamptz"},
 	{src: time.Now().UTC(), dst: &timev, pgtype: "timestamptz"},
 	{src: nil, dst: &timev, pgtype: "timestamptz", wantzero: true},

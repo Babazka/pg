@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync"
 
-	"gopkg.in/pg.v2/pgutil"
+	"github.com/lukashes/pg/pgutil"
 )
 
 var (

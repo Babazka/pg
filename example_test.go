@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"gopkg.in/pg.v2"
+	"github.com/lukashes/pg"
 )
 
 var db *pg.DB

@@ -5,9 +5,9 @@ import (
 	"sync"
 	"time"
 
-	. "launchpad.net/gocheck"
+	. "gopkg.in/check.v1"
 
-	"gopkg.in/pg.v2"
+	"github.com/lukashes/pg"
 )
 
 var _ = Suite(&PoolTest{})
