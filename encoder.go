@@ -124,8 +124,13 @@ func appendRawTime(dst []byte, tm time.Time) []byte {
 	return append(dst, tm.Local().Format(timestamptzFormat)...)
 }
 
+func IsNil(a interface{}) bool {
+	defer func() { recover() }()
+	return a == nil || (reflect.ValueOf(a).IsNil() && reflect.TypeOf(a).Kind() == reflect.Ptr)
+}
+
 func appendIface(dst []byte, srci interface{}) []byte {
-	if srci == nil {
+	if IsNil(srci)  {
 		return append(dst, "NULL"...)
 	}
 
